@@ -1,2 +1,2 @@
 # gg
-:pray: `gg` for github notifications
+:pray: command `shit` for github notifications

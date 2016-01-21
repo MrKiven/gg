@@ -22,11 +22,6 @@ class GithubAPIToken(AuthBase):
 
 @click.command()
 @click.version_option()
-@click.option('--token', default=False, is_flag=True,
-              help='if need token(default: False)')
-def gg(token):
-    if token:
-        r = requests.get(API, auth=GithubAPIToken(TOKEN))
-    else:
-        r = requests.get(API)
-    return r.text
+def shit():
+    r = requests.get(API, auth=GithubAPIToken(TOKEN))
+    print r.text
