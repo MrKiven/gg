@@ -24,4 +24,18 @@ class GithubAPIToken(AuthBase):
 @click.version_option()
 def shit():
     r = requests.get(API, auth=GithubAPIToken(TOKEN))
-    print r.text
+    content = r.json()
+    if not content:
+        print "No Notifications.."
+    else:
+        counter = 0
+        for notifi in content:
+            counter += 1
+            print """
+{}:
+    pro_name: {}
+    title   : {}
+    -------------------
+            """.format(counter,
+                       notifi['repository']['full_name'],
+                       notifi['subject']['title'])
