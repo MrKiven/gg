@@ -2,6 +2,6 @@
 :pray: command `shit` for github notifications
 
 ## Usage
-`shit` to get unread notifications
-`shit --music` to play music by pygame
+1. `shit` to get unread notifications
+2. `shit --music` to play music by pygame
 
