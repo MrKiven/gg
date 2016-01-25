@@ -20,6 +20,13 @@ class GithubAPIToken(AuthBase):
         return r
 
 
+def encode_utf8(s):
+    if type(s) == unicode:
+        return s.encode('utf-8')
+    else:
+        return s
+
+
 @click.command()
 @click.version_option()
 def shit():
@@ -37,5 +44,5 @@ def shit():
     title   : {}
     -------------------
             """.format(counter,
-                       notifi['repository']['full_name'],
-                       notifi['subject']['title'])
+                       encode_utf8(notifi['repository']['full_name']),
+                       encode_utf8(notifi['subject']['title']))
