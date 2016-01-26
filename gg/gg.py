@@ -76,12 +76,10 @@ def shit(id, music):
         counter = 0
         for notifi in content:
             counter += 1
-            text = """
-{}:
+            text = """{}:
     pro_name: {}
     title   : {}
-    -------------------
-            """.format(counter,
-                       encode_utf8(notifi['repository']['full_name']),
-                       encode_utf8(notifi['subject']['title']))
+    -------------------""".format(counter,
+                                  encode_utf8(notifi['repository']['full_name']),
+                                  encode_utf8(notifi['subject']['title']))
             write(text)
