@@ -82,4 +82,5 @@ def shit(id, music):
     -------------------""".format(counter,
                                   encode_utf8(notifi['repository']['full_name']),
                                   encode_utf8(notifi['subject']['title']))
+            print text
             write(text)
