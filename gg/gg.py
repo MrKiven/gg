@@ -9,7 +9,7 @@ from .consts import (
     TOKEN,
     NOTIFICATIONS_FILEE
 )
-from .music import play_music
+from .music import Music
 
 
 # github api token
@@ -66,7 +66,8 @@ def encode_utf8(s):
 @click.option('--music', default=False, is_flag=True)
 def shit(id, music):
     if music:
-        play_music()
+        music = Music()
+        music.play()
     write = WriteObject()
     r = requests.get(API, auth=GithubAPIToken(TOKEN))
     content = r.json()

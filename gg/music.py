@@ -1,20 +1,50 @@
 # -*- coding: utf-8 -*-
 
 import pygame
-import sys
+
+_songs = [
+    '/Users/shenjialong/Slippin.mp3',
+    '/Users/shenjialong/Slippin.mp3'
+]
+
+_commands = [
+    'restart',
+    'start',
+    'stop',
+    'quit',
+    'next',
+]
 
 
-def play_music():
-    pygame.init()
-    pygame.mixer.init()
-    pygame.display.set_mode([100, 100])
-    pygame.time.delay(1000)
-    pygame.mixer.music.load("/Users/shenjialong/Slippin.mp3")  # your music path
-    pygame.mixer.music.play()
-    while 1:
-        try:
-            for event in pygame.event.get():
-                if event.type==pygame.QUIT:
-                    sys.exit()
-        except KeyboardInterrupt:
-            sys.exit(1)
+class Music(object):
+
+    def __init__(self):
+        pygame.init()
+        pygame.mixer.init()
+        pygame.display.set_mode([200, 100])
+        pygame.time.delay(1000)
+
+    def play(self):
+        for song in _songs:
+            pygame.mixer.music.load(song)
+            pygame.mixer.music.play()
+            while pygame.mixer.music.get_busy():
+                command = raw_input("Input a command: ")
+                if command not in _commands:
+                    print "commands ===> `{}` availd!!".format(command)
+                    continue
+                else:
+                    if command == 'start':
+                        pygame.mixer.music.unpause()
+                        print "Resume Paused Music..."
+                    if command == 'stop':
+                        pygame.mixer.music.pause()
+                        print "Pause Current Music..."
+                    if command == 'next':
+                        pygame.mixer.music.stop()
+                        print "Playing Next..."
+                    if command == 'restart':
+                        pygame.mixer.music.rewind()
+                        print "Restart Current Music..."
+                    if command == 'quit':
+                        pass
