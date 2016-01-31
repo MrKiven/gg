@@ -68,20 +68,21 @@ def shit(id, music):
     if music:
         music = Music()
         music.play()
-    write = WriteObject()
-    r = requests.get(API, auth=GithubAPIToken(TOKEN))
-    content = r.json()
-    if not content:
-        print "No Notifications.."
     else:
-        counter = 0
-        for notifi in content:
-            counter += 1
-            text = """{}:
-    pro_name: {}
-    title   : {}
-    -------------------""".format(counter,
-                                  encode_utf8(notifi['repository']['full_name']),
-                                  encode_utf8(notifi['subject']['title']))
-            print text
-            write(text)
+        write = WriteObject()
+        r = requests.get(API, auth=GithubAPIToken(TOKEN))
+        content = r.json()
+        if not content:
+            print "No Notifications.."
+        else:
+            counter = 0
+            for notifi in content:
+                counter += 1
+                text = """{}:
+        pro_name: {}
+        title   : {}
+        -------------------""".format(counter,
+                                      encode_utf8(notifi['repository']['full_name']),
+                                      encode_utf8(notifi['subject']['title']))
+                print text
+                write(text)
