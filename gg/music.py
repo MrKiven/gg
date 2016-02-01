@@ -47,4 +47,4 @@ class Music(object):
                         pygame.mixer.music.rewind()
                         print "Restart Current Music..."
                     if command == 'quit':
-                        pass
+                        break
