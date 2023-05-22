@@ -27,6 +27,6 @@ setup(
     url='https://github.com/MrKiven/gg/',
     entry_points={'console_scripts': entry_points},
     install_requires=[
-        'requests==2.20.0'
+        'requests==2.31.0'
     ],
 )
